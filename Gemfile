@@ -55,4 +55,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # ここから自分で追加
 gem 'mysql2', '~> 0.4.9'
-gem 'react-rails'
