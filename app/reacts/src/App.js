@@ -1,21 +1,34 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import { BrowserRouter, Route, Link } from 'react-router-dom'
+import Friends from './pages/Friends';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+const App = () => (
+    <BrowserRouter>
+        <div>
+        <Route exact path='/' component={Home} />
+        <Route path='/about' component={About} />
+        <Route path='/friends' component={Friends} />
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+    </BrowserRouter>
+)
 
-export default App;
+const Home = () => (
+    <div>
+      <h2>Home</h2>
+      <p>Welcome to ようこそ</p>
+    </div>
+)
+const About = () => (
+    <div>
+      <h2>About</h2>
+      <p>フレンズに投票するページです</p>
+    </div>
+)
+// const Friends = () => (
+//     <div>
+//       <h2>Friends</h2>
+//       <p>ここにフレンズのリストを書きます</p>
+//     </div>
+// )
+
+export default App
