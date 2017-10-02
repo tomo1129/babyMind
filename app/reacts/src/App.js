@@ -1,14 +1,20 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 import Friends from './pages/Friends';
+import Header from './components/Header';
+
+import './common/base.css';
+import './common/layout.css';
+import './common/reset.css';
 
 const App = () => (
     <BrowserRouter>
-        <div>
+      <div>
+        <Header/>
         <Route exact path='/' component={Home} />
         <Route path='/about' component={About} />
         <Route path='/friends' component={Friends} />
-        </div>
+      </div>
     </BrowserRouter>
 )
 
