@@ -1,5 +1,7 @@
 {
   "name": "babyMind",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "superagent": "^3.6.2"
+  }
 }

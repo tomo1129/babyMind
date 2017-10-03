@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import request from 'superagent'
 
 import './Sidebar.css';
 
@@ -13,6 +14,7 @@ class Sidebar extends Component {
 
 		this.onChangeEmail = this.onChangeEmail.bind(this);
 		this.onChangePassword = this.onChangePassword.bind(this);
+    this.login = this.login.bind(this);
 	}
 
 	onChangeEmail(e) {
@@ -21,6 +23,17 @@ class Sidebar extends Component {
 
 	onChangePassword(e) {
 		this.setState({ password: e.target.value });
+	}
+
+	login() {
+		request
+			.post('http://localhost:3000/login')
+			.send({email: this.state.email, password: this.state.password})
+			.end((err, res) => {
+				if (err) {
+					console.log('error')
+				}
+			})
 	}
 
 	render() {
@@ -35,7 +48,7 @@ class Sidebar extends Component {
 								<input className="input1" type="text" value={this.state.email} onChange={this.onChangeEmail} placeholder="メールアドレス"/>
 								<input className="input1" type="password" value={this.state.password} onChange={this.onChangePassword} placeholder="パスワード" />
 								<p className="btn-area">
-									<a href="/login" className="btn1">ログイン</a>
+									<a onClick={this.login} className="btn1">ログイン</a>
 								</p>
 							</div>
 
