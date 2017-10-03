@@ -66,3 +66,18 @@ body {
     color: #5f5858;
     font-size: 1.0rem;
     line-height: 1.2rem; }
+
+.btn1 {
+  color: #fff;
+  background: #5f5858;
+  padding: 5px 10px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px; }
+
+.input1 {
+  font-size: 0.9rem;
+  padding: 3px 5px;
+  border-radius: 5px;
+  border: 1px solid #b9b7b7; }
