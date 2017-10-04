@@ -28,7 +28,10 @@ class Sidebar extends Component {
 	login() {
 		request
 			.post('http://localhost:3000/login')
-			.send({email: this.state.email, password: this.state.password})
+			.send({
+				email: this.state.email,
+				password: this.state.password
+			})
 			.end((err, res) => {
 				if (err) {
 					console.log('error')
