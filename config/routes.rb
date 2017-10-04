@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 	root 'home#index'
 	get '/friends', to: 'home#index'
+	# preflight対応
+	namespace :login, defaults: { format: :json } do
+		match '*path' => 'options_request#preflight', via: :options
+	end
 
 	resource :login, only: [:create], controller: :sessions
 	resource :users, only: [:create]
+
 end

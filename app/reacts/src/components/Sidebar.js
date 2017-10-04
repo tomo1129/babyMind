@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import request from 'superagent'
+import axios from 'axios'
 
 import './Sidebar.css';
 
@@ -26,16 +26,12 @@ class Sidebar extends Component {
 	}
 
 	login() {
-		request
-			.post('http://localhost:3000/login')
-			.send({
+		axios.post('http://localhost:3000/login', {
 				email: this.state.email,
 				password: this.state.password
 			})
-			.end((err, res) => {
-				if (err) {
-					console.log('error')
-				}
+			.then(function (response) {
+				console.log(response);
 			})
 	}
 
