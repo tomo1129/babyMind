@@ -15,6 +15,7 @@ class RouterTop extends Component {
       <div className={this.props.match.params.relation}>
         <Header/>
         <div className="main-article clearfix">
+          <Route exact path='/' component={Home} />
           <Route path='/signup' component={Signup} />
           <Sidebar/>
         </div>
