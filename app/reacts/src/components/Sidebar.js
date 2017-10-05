@@ -26,7 +26,7 @@ class Sidebar extends Component {
 	}
 
 	login() {
-		axios.post('http://localhost:3000/login', {
+		axios.post('http://localhost:3000/api/login', {
 				email: this.state.email,
 				password: this.state.password
 			})
@@ -49,6 +49,7 @@ class Sidebar extends Component {
 								<p className="btn-area">
 									<a onClick={this.login} className="btn1">ログイン</a>
 								</p>
+								<a href="signup">会員登録がまだの方はこちら</a>
 							</div>
 
 							<dl className="thread-list">

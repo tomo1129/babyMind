@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
-import Friends from './pages/Friends';
+import Signup from './pages/Signup';
 import Home from './pages/Home';
 import Header from './components/Header';
 import Sidebar from "./components/Sidebar";
@@ -16,7 +16,7 @@ const App = () => (
         <Header/>
         <article className="main-article clearfix">
           <Route exact path='/' component={Home} />
-          <Route path='/friends' component={Friends} />
+          <Route path='/signup' component={Signup} />
           <Sidebar/>
         </article>
         <Footer/>

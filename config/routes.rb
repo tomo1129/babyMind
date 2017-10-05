@@ -4,11 +4,11 @@ Rails.application.routes.draw do
 	root 'home#index'
 	get '/friends', to: 'home#index'
 	# preflight対応
-	namespace :login, defaults: { format: :json } do
-		match '*path' => 'options_request#preflight', via: :options
-	end
+	match '*path' => 'options_request#preflight', via: :options
 
-	resource :login, only: [:create], controller: :sessions
-	resource :users, only: [:create]
+	namespace :api, defaults: { format: :json } do
+		resource :login, only: [:create], controller: :sessions
+		resource :users, only: [:create]
+	end
 
 end
