@@ -34,32 +34,34 @@ class Signup extends Component {
   signup() {
     axios.post('http://localhost:3000/api/users', {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
+      passwordConfirm: this.state.passwordConfirm
     })
-		.then(function (response) {
-			console.log(response);
-		})
+    .then(function (response) {
+      console.log(response);
+    })
   }
 
   render() {
-		return (
-			<main className="main-contents">
-				<div className="edge-outer">
-					<div className="edge-inner">
-						<section className="signup-section">
+    return (
+      <main className="main-contents">
+        <div className="edge-outer">
+          <div className="edge-inner">
+            <section className="signup-section">
 
-							<input className="input1" type="text" value={this.state.email} onChange={this.onChangeEmail} placeholder="メールアドレス"/>
-							<input className="input1" type="password" value={this.state.password} onChange={this.onChangePassword} placeholder="パスワード" />
-							<input className="input1" type="password" value={this.state.passwordConfirm} onChange={this.onChangePasswordConfirm} placeholder="パスワード再入力" />
-							<p className="btn-area">
-								<a onClick={this.signup} className="btn1">会員登録</a>
-							</p>
+              <p>以下のフォームを入力してください。</p>
+              <input className="input1" type="text" value={this.state.email} onChange={this.onChangeEmail} placeholder="メールアドレス"/>
+              <input className="input1" type="password" value={this.state.password} onChange={this.onChangePassword} placeholder="パスワード" />
+              <input className="input1" type="password" value={this.state.passwordConfirm} onChange={this.onChangePasswordConfirm} placeholder="パスワード再入力" />
+              <p className="btn-area">
+                <a onClick={this.signup} className="btn1">会員登録</a>
+              </p>
 
-						</section>
-					</div>
-				</div>
-			</main>
-		);
-	}
+            </section>
+          </div>
+        </div>
+      </main>
+    );
+  }
 }
 export default Signup;

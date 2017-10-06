@@ -1,0 +1,10 @@
+.signup-section {
+  line-height: 30px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto; }
+  .signup-section .input1 {
+    display: block;
+    width: 100%; }
+  .signup-section .btn-area {
+    text-align: center; }
