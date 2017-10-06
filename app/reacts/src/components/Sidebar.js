@@ -4,74 +4,76 @@ import axios from 'axios'
 import './Sidebar.css';
 
 class Sidebar extends Component {
-	constructor(props) {
-		super(props);
+  constructor(props) {
+    super(props);
 
-		this.state = {
-			email: '',
-			password: ''
-		};
+    this.state = {
+      email: '',
+      password: ''
+    };
 
-		this.onChangeEmail = this.onChangeEmail.bind(this);
-		this.onChangePassword = this.onChangePassword.bind(this);
+    this.onChangeEmail = this.onChangeEmail.bind(this);
+    this.onChangePassword = this.onChangePassword.bind(this);
         this.login = this.login.bind(this);
-	}
+  }
 
-	onChangeEmail(e) {
-		this.setState({ email: e.target.value });
-	}
+  onChangeEmail(e) {
+    this.setState({ email: e.target.value });
+  }
 
-	onChangePassword(e) {
-		this.setState({ password: e.target.value });
-	}
+  onChangePassword(e) {
+    this.setState({ password: e.target.value });
+  }
 
-	login() {
-		axios.post('http://localhost:3000/api/login', {
-				email: this.state.email,
-				password: this.state.password
-			})
-			.then(function (response) {
-				console.log(response);
-			})
-	}
+  login() {
+    axios.post('http://localhost:3000/api/login', {
+        email: this.state.email,
+        password: this.state.password
+      })
+      .then(function (response) {
+        if (response.statusText === 'OK') {
+        //  fluxを書き換えてisLoginをtrueにする感じ
+        }
+      })
+  }
 
-	render() {
-		return (
-			<div className="sidebar">
-				<div className="edge-outer">
-					<div className="edge-inner">
+  render() {
+    return (
+      <div className="sidebar">
+        <div className="edge-outer">
+          <div className="edge-inner">
 
-						<section>
+            <section>
 
-							<div className="login-area">
-								<input className="input1" type="text" value={this.state.email} onChange={this.onChangeEmail} placeholder="メールアドレス"/>
-								<input className="input1" type="password" value={this.state.password} onChange={this.onChangePassword} placeholder="パスワード" />
-								<p className="btn-area">
-									<a onClick={this.login} className="btn1">ログイン</a>
-								</p>
-								<a href="signup">会員登録がまだの方はこちら</a>
-							</div>
+              <div className="login-area">
+                <input className="input1" type="text" value={this.state.email} onChange={this.onChangeEmail} placeholder="メールアドレス"/>
+                <input className="input1" type="password" value={this.state.password} onChange={this.onChangePassword} placeholder="パスワード" />
+                <p className="btn-area">
+                  <a onClick={this.login} className="btn1">ログイン</a>
+                </p>
+                <a href="signup">会員登録がまだの方はこちら</a>
+              </div>
 
-							<dl className="thread-list">
-								<dt>&#9830;人気スレッド</dt>
-								<dd><a href="">テストテストテストテストテストテストテストテストテストテスト</a></dd>
-								<dd><a href="">テストテストテストテストテストテストテストテストテストテスト</a></dd>
-								<dd><a href="">テストテストテストテストテストテストテストテストテストテスト</a></dd>
-							</dl>
+              <dl className="thread-list">
+                <dt>&#9830;人気スレッド</dt>
+                <dd><a href="">テストテストテストテストテストテストテストテストテストテスト</a></dd>
+                <dd><a href="">テストテストテストテストテストテストテストテストテストテスト</a></dd>
+                <dd><a href="">テストテストテストテストテストテストテストテストテストテスト</a></dd>
+              </dl>
 
-							<dl className="thread-list">
-								<dt>&#9830;人気アンケート</dt>
-								<dd><a href="">テストテストテストテストテストテストテストテストテストテスト</a></dd>
-								<dd><a href="">テストテストテストテストテストテストテストテストテストテスト</a></dd>
-								<dd><a href="">テストテストテストテストテストテストテストテストテストテスト</a></dd>
-							</dl>
+              <dl className="thread-list">
+                <dt>&#9830;人気アンケート</dt>
+                <dd><a href="">テストテストテストテストテストテストテストテストテストテスト</a></dd>
+                <dd><a href="">テストテストテストテストテストテストテストテストテストテスト</a></dd>
+                <dd><a href="">テストテストテストテストテストテストテストテストテストテスト</a></dd>
+              </dl>
 
-						</section>
+            </section>
 
-					</div>
-				</div>
-			</div>
-		);
-	}
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 export default Sidebar;

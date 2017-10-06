@@ -8,6 +8,8 @@ class Api::SessionsController < ApplicationController
 
 		if @user.valid_password?(params[:password])
 			sign_in :user, @user
+			# CSRF対策ができるまではセッション消える
+			session[:user_id] = @user.id
 			render json: @user, serializer: SessionSerializer, root: nil
 		else
 			invalid_password

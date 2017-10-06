@@ -33,9 +33,11 @@ class Signup extends Component {
 
   signup() {
     axios.post('http://localhost:3000/api/users', {
-      email: this.state.email,
-      password: this.state.password,
-      passwordConfirm: this.state.passwordConfirm
+      user: {
+        email: this.state.email,
+        password: this.state.password,
+        passwordConfirm: this.state.passwordConfirm
+      }
     })
     .then(function (response) {
       console.log(response);

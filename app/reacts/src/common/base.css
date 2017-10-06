@@ -74,7 +74,8 @@ body {
   display: inline-block;
   text-align: center;
   text-decoration: none;
-  border-radius: 5px; }
+  border-radius: 5px;
+  cursor: pointer; }
 
 .input1 {
   font-size: 0.9rem;
