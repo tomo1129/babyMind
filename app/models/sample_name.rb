@@ -1,0 +1,2 @@
+class SampleName < ApplicationRecord
+end

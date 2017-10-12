@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170929010052) do
+ActiveRecord::Schema.define(version: 20171012004452) do
+
+  create_table "relations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "key"
+    t.string "name"
+  end
+
+  create_table "sample_names", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "relation_id"
+    t.string "name"
+    t.index ["relation_id"], name: "index_sample_names_on_relation_id"
+  end
+
+  create_table "user_names", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "relation_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["relation_id"], name: "index_user_names_on_relation_id"
+    t.index ["user_id"], name: "index_user_names_on_user_id"
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
@@ -33,4 +54,7 @@ ActiveRecord::Schema.define(version: 20170929010052) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "sample_names", "relations"
+  add_foreign_key "user_names", "relations"
+  add_foreign_key "user_names", "users"
 end

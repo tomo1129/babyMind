@@ -9,8 +9,8 @@ class Api::SessionsController < ApplicationController
 		if @user.valid_password?(params[:password])
 			sign_in :user, @user
 			# CSRF対策ができるまではセッション消える
-			session[:user_id] = @user.id
-			render json: @user, serializer: SessionSerializer, root: nil
+			session[:userId] = @user.id
+			render json: {user: @user, csrfToken: session[:_cs]}
 		else
 			invalid_password
 		end
@@ -26,5 +26,12 @@ class Api::SessionsController < ApplicationController
 	def invalid_password
 		warden.custom_failure!
 		render json: { error: t('invalid_password') }
+	end
+
+	def set_user_name(user)
+		@relation = Relation.all
+		for relate in @relation
+			UserName.
+		end
 	end
 end

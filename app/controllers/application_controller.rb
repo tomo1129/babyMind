@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  # CSRF対策はログインチェックのアクセス時に同時に取得させる
   # protect_from_forgery with: :exception
 
   # before_action :authenticate_user_from_token!

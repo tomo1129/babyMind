@@ -1,0 +1,64 @@
+.header {
+  width: 94%;
+  margin: 20px auto;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 2px 2px 4px #777575;
+  text-align: center;
+  
+  h1 {
+    font-size: 2.0rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-shadow: 2px 2px 2px #bfb9b9;
+  }
+  
+  h2 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-shadow: 2px 2px 2px #bfb9b9;
+  }
+  
+}
+
+.header-menu {
+  padding: 5px 0;
+}
+
+.header-menu-list {
+  display: inline-block;
+  
+  a {
+    font-size: 1.1rem;
+    color: #5f5858;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    
+    &.active {
+      color: #fff;
+    }
+  }
+}
+
+.to-message {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 2px #bfb9b9;
+}
+
+.topic-list {
+  overflow: hidden;
+  height: 60px;
+  margin-bottom: -5px;
+}
+
+.topic {
+  margin-top: 15px;
+  display: block;
+  color: #5f5858;
+  line-height: 1.5rem;
+}
