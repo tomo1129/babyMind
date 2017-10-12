@@ -28,10 +28,4 @@ class Api::SessionsController < ApplicationController
 		render json: { error: t('invalid_password') }
 	end
 
-	def set_user_name(user)
-		@relation = Relation.all
-		for relate in @relation
-			UserName.
-		end
-	end
 end
