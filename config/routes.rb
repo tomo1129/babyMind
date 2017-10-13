@@ -8,7 +8,13 @@ Rails.application.routes.draw do
 
 	namespace :api, defaults: { format: :json } do
 		resource :login, only: [:create], controller: :sessions
-		resource :users, only: [:create]
+		resource :users do
+			resource :save, only: [:save_name, :save_email, :save_password] do
+				post 'name', to: 'save_name'
+				post 'email', to: 'save_email'
+				post 'password', to: 'save_password'
+			end
+		end
 		resource :initial, only: [:show]
 	end
 

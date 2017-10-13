@@ -72,23 +72,58 @@
 </template>
 
 <script>
-  export default {
-    name: 'mypage',
-    data () {
-      return {
-        motherName: null,
-        fatherName: null,
-        fetalName: null,
-        babyName: null,
-        grandpaName: null,
-        grandmaName: null,
-        email: null,
-        password: null,
-        passwordConfirm: null,
-        passwordOld: null
+import axios from 'axios'
+
+export default {
+  name: 'mypage',
+  data () {
+    return {
+      motherName: null,
+      fatherName: null,
+      fetalName: null,
+      babyName: null,
+      grandpaName: null,
+      grandmaName: null,
+      email: null,
+      password: null,
+      passwordConfirm: null,
+      passwordOld: null
+    }
+  },
+  created () {
+    axios.get('/api/users', {})
+    .then(res => {
+      if (res.statusText === 'OK') {
+        this.motherName = res.data[0].name
+        this.fatherName = res.data[1].name
+        this.fetalName = res.data[2].name
+        this.babyName = res.data[3].name
+        this.grandpaName = res.data[4].name
+        this.grandmaName = res.data[5].name
+//        this.fatherName = res.data[1].name
+//        this.fatherName = res.data[1].name
+//        this.fatherName = res.data[1].name
       }
+    })
+  },
+  methods: {
+    saveName () {
+      axios.post('/api/users/save/name', {
+        motherName: this.motherName,
+        fatherName: this.fatherName,
+        fetalName: this.fetalName,
+        babyName: this.babyName,
+        grandpaName: this.grandpaName,
+        grandmaName: this.grandmaName
+      })
+      .then(res => {
+        if (res.statusText === 'OK') {
+          console.log()
+        }
+      })
     }
   }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

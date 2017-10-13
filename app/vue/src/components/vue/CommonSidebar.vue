@@ -15,7 +15,7 @@
           </div>
           <div class="login-area" v-if="$store.getters['login/getLoginStatus'] === true">
             <p class="btn-area">
-              <a :href="$route.params.relation + '/mypage'" class="btn1">マイページ</a>
+              <a :href="'/' + $route.params.relation + '/mypage'" class="btn1">マイページ</a>
             </p>
           </div>
 
@@ -53,8 +53,8 @@ export default {
     }
   },
   methods: {
-    login: function () {
-      var vm = this
+    login () {
+//      var vm = this
       axios.post('/api/login', {
         email: this.email,
         password: this.password
@@ -65,8 +65,8 @@ export default {
           if (res.data.user !== null) {
             store.dispatch('login/setLoginStatus', true)
             store.dispatch('login/setUser', res.data.user)
-            vm.email = null
-            vm.password = null
+            this.email = null
+            this.password = null
           }
         }
       })

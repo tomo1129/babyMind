@@ -1,12 +1,18 @@
 class Api::UsersController < ApplicationController
 	# skip_before_action :authenticate_user_from_token!, only: [:create]
 
+	def show
+		@userName = UserName.where(user_id: session[:userId])
+		render json: @userName
+	end
+
 	def create
 		ActiveRecord::Base.transaction do
 			@user = User.new user_params
 
 			if @user.save!
 				set_user_name(@user)
+				session[:userId] = @user.id
 				render json: @user, serializer: SessionSerializer, root: nil
 			else
 				render json: { error: t('user_create_error') }, status: :unprocessable_entity
@@ -27,7 +33,6 @@ class Api::UsersController < ApplicationController
 			@digits = 4
 			@numeric = ('0'..'9')
 
-			# カウントしてランダムなidを取得してしまうかな
 			@relateSamples = SampleName.where(relation_id: relate.id)
 			@sampleCount = @relateSamples.to_a.count()
 			@sampleRandom = random.rand(1..@sampleCount)
@@ -46,8 +51,10 @@ class Api::UsersController < ApplicationController
 					break
 				end
 			end
-
 		end
 	end
 
+	def save_name
+
+	end
 end
