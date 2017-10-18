@@ -90,31 +90,30 @@ export default {
       passwordOld: null
     }
   },
-  created () {
-    axios.get('/api/users', {})
-    .then(res => {
-      if (res.statusText === 'OK') {
-        this.motherName = res.data[0].name
-        this.fatherName = res.data[1].name
-        this.fetalName = res.data[2].name
-        this.babyName = res.data[3].name
-        this.grandpaName = res.data[4].name
-        this.grandmaName = res.data[5].name
+//  created () {
+//    axios.get('/api/users', {})
+//    .then(res => {
+//      if (res.statusText === 'OK') {
+//        this.motherName = res.data[0].name
 //        this.fatherName = res.data[1].name
-//        this.fatherName = res.data[1].name
-//        this.fatherName = res.data[1].name
-      }
-    })
-  },
+//        this.fetalName = res.data[2].name
+//        this.babyName = res.data[3].name
+//        this.grandpaName = res.data[4].name
+//        this.grandmaName = res.data[5].name
+//      }
+//    })
+//  },
   methods: {
     saveName () {
-      axios.post('/api/users/save/name', {
+      axios.post('/api/users/name', {
         motherName: this.motherName,
         fatherName: this.fatherName,
         fetalName: this.fetalName,
         babyName: this.babyName,
         grandpaName: this.grandpaName,
         grandmaName: this.grandmaName
+      }, {
+        headers: {'Authorization': 'bearer ' + this.$cookies.get('minnano-kimochi')}
       })
       .then(res => {
         if (res.statusText === 'OK') {

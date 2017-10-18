@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     signup: function () {
-      axios.post('/api/users', {
+      axios.post('/api/signup', {
         user: {
           email: this.email,
           password: this.password,
@@ -41,6 +41,7 @@ export default {
       })
         .then(function (response) {
           if (response.statusText === 'OK') {
+//            うまくいったらloginのメソッド
             console.log(response)
           }
         })

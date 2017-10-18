@@ -2,7 +2,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
 
 	if Rails.env == 'development'
 		allow do
-			origins 'http://localhost:4000'
+			origins ENV["ALLOW_ORIGIN"]
 
 			resource '*',
 				headers: :any,

@@ -56,8 +56,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # ここから自分で追加
 gem 'mysql2', '~> 0.4.9'
 gem 'dotenv-rails'
-gem 'devise'
 gem 'active_model_serializers'
 gem 'ruby-debug-ide'
 gem 'debase'
 gem 'rack-cors'
+gem 'knock'
+gem 'faker'
+gem 'bcrypt'
+gem 'jsonapi-resources'

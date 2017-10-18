@@ -11,11 +11,12 @@
             <p class="btn-area">
               <a @click="login()" class="btn1">ログイン</a>
             </p>
-            <a href="signup">会員登録がまだの方はこちら</a>
+            <a :href="'/' + $route.params.relation + '/signup'">会員登録がまだの方はこちら</a>
           </div>
           <div class="login-area" v-if="$store.getters['login/getLoginStatus'] === true">
             <p class="btn-area">
               <a :href="'/' + $route.params.relation + '/mypage'" class="btn1">マイページ</a>
+              <a @click="logout()" class="btn1">ログアウト</a>
             </p>
           </div>
 
@@ -43,7 +44,10 @@
 <script>
 import axios from 'axios'
 import store from '../../vuex'
+import VueCookies from 'vue-cookies'
+import Vue from 'vue'
 
+Vue.use(VueCookies)
 export default {
   name: 'common-sidebar',
   data () {
@@ -54,22 +58,24 @@ export default {
   },
   methods: {
     login () {
-//      var vm = this
-      axios.post('/api/login', {
-        email: this.email,
-        password: this.password
-      })
-      .then(function (res) {
-        if (res.statusText === 'OK') {
-          store.dispatch('login/setCsrfToken', res.data.csrfToken)
-          if (res.data.user !== null) {
-            store.dispatch('login/setLoginStatus', true)
-            store.dispatch('login/setUser', res.data.user)
-            this.email = null
-            this.password = null
-          }
+      axios.post('/api/user_token', {
+        auth: {
+          email: this.email,
+          password: this.password
         }
       })
+      .then(res => {
+        if (res.statusText === 'Created') {
+          this.$cookies.set('minnano-kimochi', res.data.jwt, 60 * 60 * 24 * 30)
+          store.dispatch('login/setLoginStatus', true)
+          this.email = null
+          this.password = null
+        }
+      })
+    },
+    logout () {
+      this.$cookies.remove('minnano-kimochi')
+      store.dispatch('login/setLoginStatus', false)
     }
   }
 }

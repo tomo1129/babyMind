@@ -1,19 +1,11 @@
-class Api::UsersController < ApplicationController
-	# skip_before_action :authenticate_user_from_token!, only: [:create]
-
-	def show
-		@userName = UserName.where(user_id: session[:userId])
-		render json: @userName
-	end
-
+class Api::SignupsController < ApplicationController
 	def create
 		ActiveRecord::Base.transaction do
 			@user = User.new user_params
 
 			if @user.save!
 				set_user_name(@user)
-				session[:userId] = @user.id
-				render json: @user, serializer: SessionSerializer, root: nil
+				render json: @user
 			else
 				render json: { error: t('user_create_error') }, status: :unprocessable_entity
 			end
@@ -54,7 +46,4 @@ class Api::UsersController < ApplicationController
 		end
 	end
 
-	def save_name
-
-	end
 end

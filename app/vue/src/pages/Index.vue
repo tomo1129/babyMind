@@ -13,7 +13,6 @@
 import CommonHeader from '../components/vue/CommonHeader'
 import CommonSidebar from '../components/vue/CommonSidebar'
 import CommonFooter from '../components/vue/CommonFooter'
-import axios from 'axios'
 import store from '../vuex'
 
 export default {
@@ -29,16 +28,9 @@ export default {
     }
   },
   created () {
-    axios.get('/api/initial', {})
-    .then(function (res) {
-      store.dispatch('login/setCsrfToken', res.data.csrfToken)
-      if (res.data.user !== null) {
-        store.dispatch('login/setLoginStatus', true)
-        store.dispatch('login/setUser', res.data.user)
-      } else {
-        store.dispatch('login/setLoginStatus', false)
-      }
-    })
+    if (this.$cookies.get('minnano-kimochi') !== null) {
+      store.dispatch('login/setLoginStatus', true)
+    }
   }
 }
 </script>
