@@ -90,19 +90,21 @@ export default {
       passwordOld: null
     }
   },
-//  created () {
-//    axios.get('/api/users', {})
-//    .then(res => {
-//      if (res.statusText === 'OK') {
-//        this.motherName = res.data[0].name
-//        this.fatherName = res.data[1].name
-//        this.fetalName = res.data[2].name
-//        this.babyName = res.data[3].name
-//        this.grandpaName = res.data[4].name
-//        this.grandmaName = res.data[5].name
-//      }
-//    })
-//  },
+  created () {
+    axios.get('/api/users', {
+      headers: {'Authorization': this.$cookies.get('minnano-kimochi')}
+    })
+    .then(res => {
+      if (res.statusText === 'OK') {
+        this.motherName = res.data[0].name
+        this.fatherName = res.data[1].name
+        this.fetalName = res.data[2].name
+        this.babyName = res.data[3].name
+        this.grandpaName = res.data[4].name
+        this.grandmaName = res.data[5].name
+      }
+    })
+  },
   methods: {
     saveName () {
       axios.post('/api/users/name', {
