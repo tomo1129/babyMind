@@ -91,9 +91,7 @@ export default {
     }
   },
   created () {
-    axios.get('/api/users', {
-      headers: {'Authorization': this.$cookies.get('minnano-kimochi')}
-    })
+    axios.get('/api/users')
     .then(res => {
       if (res.statusText === 'OK') {
         this.motherName = res.data[0].name
@@ -114,8 +112,6 @@ export default {
         babyName: this.babyName,
         grandpaName: this.grandpaName,
         grandmaName: this.grandmaName
-      }, {
-        headers: {'Authorization': 'bearer ' + this.$cookies.get('minnano-kimochi')}
       })
       .then(res => {
         if (res.statusText === 'OK') {
