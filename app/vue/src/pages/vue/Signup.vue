@@ -20,6 +20,7 @@
 
 <script>
 import axios from 'axios'
+import store from '../../vuex'
 
 export default {
   name: 'signup',
@@ -31,7 +32,7 @@ export default {
     }
   },
   methods: {
-    signup: function () {
+    signup () {
       axios.post('/api/signup', {
         user: {
           email: this.email,
@@ -39,13 +40,13 @@ export default {
           passwordConfirm: this.passwordConfirm
         }
       })
-        .then(function (response) {
-          if (response.statusText === 'OK') {
+        .then(res => {
+          if (res.statusText === 'OK') {
 //            うまくいったらloginのメソッド
-            console.log(response)
+            console.log(res)
           }
         })
-    }
+    },
   }
 }
 </script>
