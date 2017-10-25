@@ -4,6 +4,8 @@ class UserTokenController < Knock::AuthTokenController
 	private
 
 	def set_login_cookie
-		# cookieの保存
+		@jsonDecode = ActiveSupport::JSON.decode(response_body[0])['jwt']
+		cookies.signed[:minnanoKimochi] = {:value => @jsonDecode, :path => '/', :expires => 1.month.from_now }
 	end
+
 end

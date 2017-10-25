@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
 	post 'api/user_token', to: 'user_token#create'
 	namespace :api, defaults: { format: :json } do
+		post 'signin/logout', to: 'signin#logout'
 		resource :users do
 			post 'name', to: 'save_name'
 		# 	post 'email', to: 'save_email'

@@ -28,7 +28,7 @@ export default {
     }
   },
   created () {
-    if (this.$cookies.get('minnano-kimochi') !== null) {
+    if (this.$cookies.get('minnanoKimochi') !== null) {
       store.dispatch('login/setLoginStatus', true)
     }
   }

@@ -66,7 +66,6 @@ export default {
       })
       .then(res => {
         if (res.statusText === 'Created') {
-          this.$cookies.set('minnano-kimochi', res.data.jwt, 60 * 60 * 24 * 30)
           store.dispatch('login/setLoginStatus', true)
           this.email = null
           this.password = null
@@ -74,8 +73,16 @@ export default {
       })
     },
     logout () {
-      this.$cookies.remove('minnano-kimochi')
-      store.dispatch('login/setLoginStatus', false)
+      axios.post('/api/signin/logout', {})
+        .then(res => {
+          if (res.statusText === 'No Content') {
+            store.dispatch('login/setLoginStatus', false)
+          }
+        })
+        .catch(e => {
+          store.dispatch('login/setLoginStatus', false)
+          throw e
+        })
     }
   }
 }

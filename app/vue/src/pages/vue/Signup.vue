@@ -20,7 +20,6 @@
 
 <script>
 import axios from 'axios'
-import store from '../../vuex'
 
 export default {
   name: 'signup',
@@ -46,7 +45,7 @@ export default {
             console.log(res)
           }
         })
-    },
+    }
   }
 }
 </script>

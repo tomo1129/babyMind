@@ -14,7 +14,7 @@ export default {
   beforeCreate () {
     axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest'
     axios.defaults.headers['X-From'] = location.href
-    axios.defaults.headers['Authorization'] = this.$cookies.get('minnano-kimochi')
+    axios.defaults.headers['Authorization'] = this.$cookies.get('minnanoKimochi')
   }
 }
 </script>
