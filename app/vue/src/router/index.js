@@ -4,6 +4,7 @@ import Index from '@/pages/Index'
 import Home from '@/pages/vue/Home'
 import Signup from '@/pages/vue/Signup'
 import Mypage from '@/pages/vue/mypage'
+import CreateThread from '@/pages/vue/createThread'
 
 Vue.use(Router)
 
@@ -25,6 +26,10 @@ export default new Router({
         {
           path: 'mypage',
           component: Mypage
+        },
+        {
+          path: 'create',
+          component: CreateThread
         }
       ]
     }
