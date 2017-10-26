@@ -57,6 +57,7 @@ export default {
     }
   },
   methods: {
+// TODO vue-facebook-signin-buttonを使ったログインボタンまで入れる
     login () {
       axios.post('/api/user_token', {
         auth: {
