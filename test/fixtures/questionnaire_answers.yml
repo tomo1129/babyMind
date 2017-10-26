@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  threads: one
+  users: one
+  questionnaires: one
+  choices: one
+
+two:
+  threads: two
+  users: two
+  questionnaires: two
+  choices: two

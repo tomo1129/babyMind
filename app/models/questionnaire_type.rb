@@ -1,0 +1,2 @@
+class QuestionnaireType < ApplicationRecord
+end
