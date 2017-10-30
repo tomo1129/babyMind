@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 		resource :initial, only: [:show]
 		resource :signin, only: [:create]
 		resource :signup, only: [:create]
+		resource :thread
 	end
 
 end

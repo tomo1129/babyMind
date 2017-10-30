@@ -1,0 +1,40 @@
+.create-thread-wrap {
+  
+  .create-thread-header {
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    width: 280px;
+    display: inline-block;
+    margin-left: 20px;
+  }
+
+  .btn-area {
+    text-align: center;
+    line-height: 30px;
+  }
+
+  &:not(:first-child) {
+    margin-top: 30px;
+  }
+
+  .create-thread {
+    margin-bottom: 10px;
+  
+    .input1 {
+      width: 400px;
+    }
+
+    label {
+      vertical-align: top;
+    }
+
+    .textarea1 {
+      height: 150px;
+      width: 400px;
+    }
+
+  }
+}

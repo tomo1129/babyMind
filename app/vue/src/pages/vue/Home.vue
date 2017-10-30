@@ -2,6 +2,15 @@
   <main class="main-contents">
     <div class="edge-outer">
       <div class="edge-inner">
+
+        <section class="create-thread">
+
+          <p class="btn-area">
+            <a :href="'/' + $route.params.relation + '/create'" class="btn1">新規スレッド作成</a>
+          </p>
+
+        </section>
+
         <section class="pickup">
 
           <div class="thread-wrap">
