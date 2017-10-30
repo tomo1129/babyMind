@@ -1,6 +1,7 @@
 class Api::UsersController < ApplicationController
 
 	# Headerにjwtのcookieを設置していれば通る
+	include JSONAPI::ActsAsResourceController
 	before_action :authenticate_user
 
 	def show
