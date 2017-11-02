@@ -13,24 +13,24 @@
 ActiveRecord::Schema.define(version: 20171026022517) do
 
   create_table "questionnaire_answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "thread_bases_id"
-    t.bigint "users_id"
-    t.bigint "questionnaires_id"
-    t.bigint "questionnaire_choices_id"
+    t.bigint "thread_base_id"
+    t.bigint "user_id"
+    t.bigint "questionnaire_id"
+    t.bigint "questionnaire_choice_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["questionnaire_choices_id"], name: "index_questionnaire_answers_on_questionnaire_choices_id"
-    t.index ["questionnaires_id"], name: "index_questionnaire_answers_on_questionnaires_id"
-    t.index ["thread_bases_id"], name: "index_questionnaire_answers_on_thread_bases_id"
-    t.index ["users_id"], name: "index_questionnaire_answers_on_users_id"
+    t.index ["questionnaire_choice_id"], name: "index_questionnaire_answers_on_questionnaire_choice_id"
+    t.index ["questionnaire_id"], name: "index_questionnaire_answers_on_questionnaire_id"
+    t.index ["thread_base_id"], name: "index_questionnaire_answers_on_thread_base_id"
+    t.index ["user_id"], name: "index_questionnaire_answers_on_user_id"
   end
 
   create_table "questionnaire_choices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "questionnaires_id"
+    t.bigint "questionnaire_id"
     t.string "choice", limit: 1024
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["questionnaires_id"], name: "index_questionnaire_choices_on_questionnaires_id"
+    t.index ["questionnaire_id"], name: "index_questionnaire_choices_on_questionnaire_id"
   end
 
   create_table "questionnaire_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -39,11 +39,11 @@ ActiveRecord::Schema.define(version: 20171026022517) do
 
   create_table "questionnaires", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "question", limit: 1024
-    t.bigint "questionnaire_types_id"
+    t.bigint "questionnaire_type_id"
     t.boolean "required"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["questionnaire_types_id"], name: "index_questionnaires_on_questionnaire_types_id"
+    t.index ["questionnaire_type_id"], name: "index_questionnaires_on_questionnaire_type_id"
   end
 
   create_table "relations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -52,13 +52,13 @@ ActiveRecord::Schema.define(version: 20171026022517) do
   end
 
   create_table "responses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "thread_bases_id"
+    t.bigint "thread_base_id"
     t.text "response"
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["thread_bases_id"], name: "index_responses_on_thread_bases_id"
-    t.index ["users_id"], name: "index_responses_on_users_id"
+    t.index ["thread_base_id"], name: "index_responses_on_thread_base_id"
+    t.index ["user_id"], name: "index_responses_on_user_id"
   end
 
   create_table "sample_names", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -70,14 +70,14 @@ ActiveRecord::Schema.define(version: 20171026022517) do
   create_table "thread_bases", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.text "body"
-    t.bigint "relations_id"
-    t.bigint "users_id"
-    t.bigint "questionnaires_id"
+    t.bigint "relation_id"
+    t.bigint "user_id"
+    t.bigint "questionnaire_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["questionnaires_id"], name: "index_thread_bases_on_questionnaires_id"
-    t.index ["relations_id"], name: "index_thread_bases_on_relations_id"
-    t.index ["users_id"], name: "index_thread_bases_on_users_id"
+    t.index ["questionnaire_id"], name: "index_thread_bases_on_questionnaire_id"
+    t.index ["relation_id"], name: "index_thread_bases_on_relation_id"
+    t.index ["user_id"], name: "index_thread_bases_on_user_id"
   end
 
   create_table "user_names", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -97,18 +97,18 @@ ActiveRecord::Schema.define(version: 20171026022517) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "questionnaire_answers", "questionnaire_choices", column: "questionnaire_choices_id"
-  add_foreign_key "questionnaire_answers", "questionnaires", column: "questionnaires_id"
-  add_foreign_key "questionnaire_answers", "thread_bases", column: "thread_bases_id"
-  add_foreign_key "questionnaire_answers", "users", column: "users_id"
-  add_foreign_key "questionnaire_choices", "questionnaires", column: "questionnaires_id"
-  add_foreign_key "questionnaires", "questionnaire_types", column: "questionnaire_types_id"
-  add_foreign_key "responses", "thread_bases", column: "thread_bases_id"
-  add_foreign_key "responses", "users", column: "users_id"
+  add_foreign_key "questionnaire_answers", "questionnaire_choices"
+  add_foreign_key "questionnaire_answers", "questionnaires"
+  add_foreign_key "questionnaire_answers", "thread_bases", column: "thread_base_id"
+  add_foreign_key "questionnaire_answers", "users"
+  add_foreign_key "questionnaire_choices", "questionnaires"
+  add_foreign_key "questionnaires", "questionnaire_types"
+  add_foreign_key "responses", "thread_bases", column: "thread_base_id"
+  add_foreign_key "responses", "users"
   add_foreign_key "sample_names", "relations"
-  add_foreign_key "thread_bases", "questionnaires", column: "questionnaires_id"
-  add_foreign_key "thread_bases", "relations", column: "relations_id"
-  add_foreign_key "thread_bases", "users", column: "users_id"
+  add_foreign_key "thread_bases", "questionnaires"
+  add_foreign_key "thread_bases", "relations"
+  add_foreign_key "thread_bases", "users"
   add_foreign_key "user_names", "relations"
   add_foreign_key "user_names", "users"
 end

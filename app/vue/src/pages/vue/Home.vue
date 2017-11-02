@@ -38,14 +38,27 @@
 </template>
 
 <script>
-  export default {
-    name: 'home',
-    data () {
-      return {
-        msg: 'Welcome to Your Vue.js App'
-      }
+import axios from 'axios'
+
+export default {
+  name: 'home',
+  data () {
+    return {
+      newThreads: null
+    }
+  },
+  methods: {
+    signup () {
+      axios.post('/api/thread/get_new', {})
+        .then(res => {
+          if (res.statusText === 'OK') {
+//            うまくいったらloginのメソッド
+            console.log(res)
+          }
+        })
     }
   }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

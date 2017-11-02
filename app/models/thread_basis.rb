@@ -1,5 +1,5 @@
 class ThreadBasis < ApplicationRecord
-  belongs_to :relations
-  belongs_to :users
-  belongs_to :questionnaires
+  belongs_to :relation
+  belongs_to :user
+  # belongs_to :questionnaires
 end
