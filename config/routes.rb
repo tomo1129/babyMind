@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 	namespace :api, defaults: { format: :json } do
 		post 'signin/logout', to: 'signin#logout'
 		resource :users do
-			post 'name', to: 'save_name'
-		# 	post 'email', to: 'save_email'
-		# 	post 'password', to: 'save_password'
+			post 'name', to: 'users#save_name'
+			post 'email', to: 'users#save_email'
+			post 'password', to: 'users#save_password'
 		end
 		resource :initial, only: [:show]
 		resource :signin, only: [:create]

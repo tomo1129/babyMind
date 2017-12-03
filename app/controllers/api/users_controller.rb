@@ -9,4 +9,7 @@ class Api::UsersController < ApplicationController
 		render json: @userName
 	end
 
+	def save_name
+		@a = 1
+	end
 end
